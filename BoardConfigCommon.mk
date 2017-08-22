@@ -55,6 +55,9 @@ TARGET_SYSTEM_PROP := device/samsung/hero-common/system.prop
 BOARD_OVERRIDE_RS_CPU_VARIANT_32 := cortex-a53.a57
 BOARD_OVERRIDE_RS_CPU_VARIANT_64 := exynos-m1
 
+# Lockscreen charging info: real time values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
 # SELinux
 BOARD_SEPOLICY_DIRS := device/samsung/hero-common/sepolicy
 
