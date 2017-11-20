@@ -1,42 +1,9 @@
 on init
-    # Directory for putting things only root should see.
-    mkdir /mnt/secure 0700 root root
-## Samsung ODE >>>
-    # Create private mountpoint so we can MS_MOVE from staging
-    mount tmpfs tmpfs /mnt/secure mode=0700,uid=0,gid=0
-
-    # Directory for staging bindmounts
-    mkdir /mnt/secure/staging 0700 root root
-    restorecon_recursive /mnt/secure/staging
-## Samsung ODE <<<
-
-    # Directory-target for where the secure container
-    # imagefile directory will be bind-mounted
-    mkdir /mnt/secure/asec 0700 root root
     mount tmpfs tmpfs /mnt/secure/asec mode=0700,uid=0,gid=0
     restorecon_recursive /mnt/secure/asec
 
     mkdir /storage 0755 root root
     
-    # Create energy-aware scheduler tuning nodes
-    mkdir /dev/stune
-    mount cgroup none /dev/stune schedtune
-    mkdir /dev/stune/top-app
-    mkdir /dev/stune/foreground
-    mkdir /dev/stune/background
-    mkdir /dev/stune/system-background
-
-    chown system system /dev/stune
-    chown system system /dev/stune/top-app
-    chown system system /dev/stune/foreground
-    chown system system /dev/stune/background
-    chown system system /dev/stune/system-background
-    chown system system /dev/stune/tasks
-    chown system system /dev/stune/top-app/tasks
-    chown system system /dev/stune/foreground/tasks
-    chown system system /dev/stune/background/tasks
-    chown system system /dev/stune/system-background/tasks
-
     chmod 0664 /dev/stune/tasks
     chmod 0664 /dev/stune/top-app/tasks
     chmod 0664 /dev/stune/foreground/tasks
@@ -662,10 +629,5 @@ service sensorhubservice /system/bin/sensorhubservice
     user system
     group input
 
-#preparefbe
-service preparefbe_ce /system/bin/preparefbe storage_ce
-    oneshot
-    disabled
-service preparefbe_de /system/bin/preparefbe storage_de
-    oneshot
-    disabled
+on property:sys.sf.restart=1
+    restart surfaceflinger

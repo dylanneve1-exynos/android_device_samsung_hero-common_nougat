@@ -20,12 +20,6 @@ on init
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
-    symlink /sdcard /storage/sdcard0
-    symlink /sdcard1 /storage/sdcard1
-    symlink /sdcard1 /mnt/extSdCard
-    symlink /sdcard1 /mnt/sdcard1
-    symlink /sdcard1 /external_sd
-    symlink /storage/usbdisk /mnt/usbdisk
 
     export EXTERNAL_STORAGE /sdcard
 
@@ -43,17 +37,12 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-# sem_daemon permission
-    chown system system /efs/sec_efs/ssp_data
-    chmod 0644 /efs/sec_efs/ssp_data
-
 # Permissions for audio
     chown system radio /sys/class/audio/earjack/select_jack
     chown system radio /sys/class/audio/earjack/key_state
     chown system radio /sys/class/audio/earjack/state
     chown system radio /sys/class/audio/earjack/mic_adc
     chown system radio /sys/class/audio/codec/check_codec_id
-    chown system audio /sys/class/dsm/max98505/dsm_log
     chown system audio /sys/class/dsm/max98506/dsm_log
     chown system audio /sys/class/dsm/maxdsm_cal/max
     chown system audio /sys/class/dsm/maxdsm_cal/min
@@ -86,7 +75,6 @@ on post-fs-data
     chown system radio /sys/class/camera/rear/fw_update
     chown system radio /sys/class/camera/rear/companion_ic_check
     chown system radio /sys/class/camera/flash/rear_flash
-    chown cameraserver system /sys/class/camera/flash/torch_flash
     chown cameraserver system /sys/class/camera/flash/rear_torch_flash
     chown system radio /sys/class/camera/front/front_camfw
     chown system radio /sys/class/camera/front/front_camfw_full
@@ -329,16 +317,6 @@ on boot
 
 # MSP FactoryApp
 	mkdir /efs/FactoryApp 0775 system system
-
-# lcd a2-line
-    copy /system/vendor/firmware/a2_line.dat /efs/FactoryApp/a2_line.dat
-    chown system system /efs/FactoryApp/a2_line.dat
-    chmod 0640 /efs/FactoryApp/a2_line.dat
-
-
-# IPSec for VOLTE
-    chown root system /dev/socket
-    chmod 0775 /dev/socket
 
 on fs
     mount_all /fstab.samsungexynos8890
