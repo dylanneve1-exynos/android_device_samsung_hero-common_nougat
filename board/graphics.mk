@@ -1,3 +1,4 @@
 # Graphics
 USE_OPENGL_RENDERER := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 5
+BOARD_EGL_CFG := device/samsung/hero-common/configs/egl.cfg
+BOARD_USES_EXYNOS5_COMMON_GRALLOC := true
