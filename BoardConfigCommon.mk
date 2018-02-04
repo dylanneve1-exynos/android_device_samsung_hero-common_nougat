@@ -48,6 +48,10 @@ TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
 # Packaging
 BLOCK_BASED_OTA := true
 
+# Camera
+TARGET_USES_MEDIA_EXTENSIONS := true
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+
 # Properties
 TARGET_SYSTEM_PROP := device/samsung/hero-common/system.prop
 
