@@ -289,4 +289,7 @@
     <!-- If enabled, capacitive keys will only light up when pressed.
          Otherwise, the buttons will light up whenever the user interacts with the device -->
     <bool name="config_buttonLightOnKeypressOnly">true</bool>
+	
+	<!-- Force use camera api v2 -->
+ +  <bool name="use_camera_api_v2">true</bool>
 </resources>
