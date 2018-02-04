@@ -47,10 +47,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # sdcardfs
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sys.sdcardfs=true
-	
-# Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.is_type=1
-	camera.hal1.packagelist=org.telegram.messenger
-	media.stagefright.legacyencoder=true
-	media.stagefright.less-secure=true
