@@ -291,5 +291,5 @@
     <bool name="config_buttonLightOnKeypressOnly">true</bool>
 	
 	<!-- Force use camera api v2 -->
- +  <bool name="use_camera_api_v2">true</bool>
+    <bool name="use_camera_api_v2">true</bool>
 </resources>
